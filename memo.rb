@@ -11,24 +11,24 @@ require "csv" # CSVファイルを扱うためのライブラリを読み込ん�
 
 if memo_type  == 1
     puts "拡張子を除いたファイル名を入力してください。"
-    new_file_name = gets.chomp.to_s
+    new_file_name = gets.chomp
     puts"新規でメモを記入してください。保存するには Ctrl+D を入力。"
     
     #ここでCSVファイルの書き込みをします
     CSV.open("#{new_file_name}.csv","w") do |csv|
-    input_new_memo = readlines
-    csv << input_new_memo
+    new_memo = STDIN.read.chomp
+    csv << ["#{new_memo}"]
     end
     
 elsif memo_type  == 2
     puts "拡張子を除いたファイル名を入力してください。"
-    edit_file_name = gets.chomp.to_s
+    edit_file_name = gets.chomp
     puts"既存のメモを編集してください。保存するには Ctrl+D を入力。"
-    
+   
     #ここでCSVファイルの書き込みをします
     CSV.open("#{edit_file_name}.csv","a") do |csv|
-    input_edit_memo = readlines
-    csv << input_edit_memo
+    edit_memo = STDIN.read.chomp
+    csv << ["#{edit_memo}"]
     end
         
 end
