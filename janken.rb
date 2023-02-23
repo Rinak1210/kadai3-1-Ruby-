@@ -16,12 +16,15 @@ def janken
   while player_hand > 3
     puts "入力する数字が間違っています"
     puts "0(グー)1(チョキ)2(パー)3(戦わない)"
+    puts "もう一度、数字を入力して下さい"
+    player_hand = gets.to_i
   end
   
-  if player_hand == 3 #戦わない
+  #戦わない
+  if player_hand == 3
     puts "じゃんけんゲームを終了します。"
     puts "-----------------------------"
-    return false
+    exit
   end
   
   if player_hand == program_hand
@@ -55,6 +58,8 @@ def acchimuitehoi
   while player_direction > 3
     puts "入力する数字が間違っています"
     puts "0(上)1(下)2(左)3(右)"
+    puts "もう一度、数字を入力して下さい"
+    player_direction = gets.to_i
   end
     
   puts "ホイ！！!"
@@ -79,13 +84,12 @@ def acchimuitehoi
     return false
     
   else player_direction != program_direction && $pass == "lose_janken"
-    puts "勝負決まらず・・・ジャンケンに戻ります"
+    puts "勝負決まらず・・・じゃんけんに戻ります"
     return true
   end
 end
   
   
-  #ここでtrueにすることによってwhile文の中に入っていける
   next_janken = true
   
   #勝負がつくまでジャンケンとあっち向いてホイをループ
@@ -96,3 +100,4 @@ end
     #あっち向いてホイをする
     next_janken = acchimuitehoi
   end
+  
